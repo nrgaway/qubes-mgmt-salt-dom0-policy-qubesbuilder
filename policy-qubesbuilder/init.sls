@@ -1,8 +1,18 @@
 #!yamlscript
+# -*- coding: utf-8 -*-
 # vim: set syntax=yaml ts=2 sw=2 sts=2 et :
 
 ##
+# policy-qubesbuilder
+# ===================
+#
+# [WORK IN PROGRESS]
+# [NOT IMPLEMENTED]
+#
 # Install qubesbuilder rpc policies to allow building a template in a DISPVM
+#
+# Execute:
+#   qubesctl state.sls policy-qubesbuilder
 ##
 
 # --- Dom0 --------------------------------------------------------------------
