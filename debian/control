@@ -9,5 +9,5 @@ Homepage: http://www.qubes-os.org
 Package: qubes-mgmt-salt-dom0-policy-qubesbuilder
 Section: admin
 Architecture: all
-Depends: qubes-mgmt-salt-base, qubes-mgmt-salt-config, qubes-mgmt-salt-dom0
+Depends: qubes-mgmt-salt, qubes-mgmt-salt-dom0
 Description: Installs or removes Qubes RPC policies in dom0 and domU to enable qubesbuilder to build in DispVMs.
