@@ -1,0 +1,24 @@
+# vim: set syntax=yaml ts=2 sw=2 sts=2 et :
+
+package-name:       qubes-mgmt-salt-dom0-policy-qubesbuilder
+name:               policy-qubesbuilder-formula
+top_level_dir:      policy-qubesbuilder
+formula-files:      README.rst LICENSE policy-qubesbuilder
+pillar-files:       
+test-formula-files: 
+test-pillar-files: 
+formula_root:       /srv/formulas
+saltenv:            dom0
+version:            3.0.0
+release:            1
+os:                 Qubes
+os_family:          RedHat
+summary:       Installs or removes Qubes RPC policies in dom0 and domU to enable qubesbuilder to build in DispVMs.
+description: |
+  Installs or removes Qubes RPC policies in dom0 and domU to enable qubesbuilder to build in DispVMs.
+
+state-tops:
+  dom0:
+    disable:
+      - policy-qubesbuilder
+      - policy-qubesbuilder.absent
