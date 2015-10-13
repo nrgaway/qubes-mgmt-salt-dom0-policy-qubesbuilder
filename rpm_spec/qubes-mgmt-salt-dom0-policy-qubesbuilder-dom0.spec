@@ -46,8 +46,8 @@ qubesctl saltutil.clear_cache -l quiet --out quiet > /dev/null || true
 qubesctl saltutil.sync_all refresh=true -l quiet --out quiet > /dev/null || true
 
 # Disable States (Work in Progress)
-qubesctl topd.disable %{state_name} saltenv=%{saltenv} -l quiet --out quiet > /dev/null || true
-qubesctl topd.disable %{state_name}.absent saltenv=%{saltenv} -l quiet --out quiet > /dev/null || true
+qubesctl top.disable %{state_name} saltenv=%{saltenv} -l quiet --out quiet > /dev/null || true
+qubesctl top.disable %{state_name}.absent saltenv=%{saltenv} -l quiet --out quiet > /dev/null || true
 
 %files
 %defattr(-,root,root)
