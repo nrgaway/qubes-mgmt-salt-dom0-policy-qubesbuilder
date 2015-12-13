@@ -1,19 +1,9 @@
-%{!?version: %define version %(make get-version)}
-%{!?rel: %define rel %(make get-release)}
-%{!?package_name: %define package_name %(make get-package_name)}
-%{!?package_summary: %define package_summary %(make get-summary)}
-%{!?package_description: %define package_description %(make get-description)}
+%{!?version: %define version %(cat version)}
 
-%{!?formula_name: %define formula_name %(make get-formula_name)}
-%{!?state_name: %define state_name %(make get-state_name)}
-%{!?saltenv: %define saltenv %(make get-saltenv)}
-%{!?pillar_dir: %define pillar_dir %(make get-pillar_dir)}
-%{!?formula_dir: %define formula_dir %(make get-formula_dir)}
-
-Name:      %{package_name}
+Name:      qubes-mgmt-salt-dom0-policy-qubesbuilder
 Version:   %{version}
-Release:   %{rel}%{?dist}
-Summary:   %{package_summary}
+Release:   1%{?dist}
+Summary:   Installs or removes Qubes RPC policies in dom0 and domU to enable qubesbuilder to build in DispVMs.
 License:   GPL 2.0
 URL:	   http://www.qubes-os.org/
 
@@ -25,7 +15,7 @@ Requires:  qubes-mgmt-salt-dom0
 %define _builddir %(pwd)
 
 %description
-%{package_description}
+Installs or removes Qubes RPC policies in dom0 and domU to enable qubesbuilder to build in DispVMs.
 
 %prep
 # we operate on the current directory, so no need to unpack anything
@@ -46,13 +36,13 @@ qubesctl saltutil.clear_cache -l quiet --out quiet > /dev/null || true
 qubesctl saltutil.sync_all refresh=true -l quiet --out quiet > /dev/null || true
 
 # Disable States (Work in Progress)
-qubesctl top.disable %{state_name} saltenv=%{saltenv} -l quiet --out quiet > /dev/null || true
-qubesctl top.disable %{state_name}.absent saltenv=%{saltenv} -l quiet --out quiet > /dev/null || true
+qubesctl top.disable policy-qubesbuilder saltenv=dom0 -l quiet --out quiet > /dev/null || true
+qubesctl top.disable policy-qubesbuilder.absent saltenv=dom0 -l quiet --out quiet > /dev/null || true
 
 %files
 %defattr(-,root,root)
 %doc LICENSE README.rst
-%attr(750, root, root) %dir %{formula_dir}
-%{formula_dir}/*
+%attr(750, root, root) %dir /srv/formulas/dom0/policy-qubesbuilder-formula
+/srv/formulas/dom0/policy-qubesbuilder-formula/*
 
 %changelog
