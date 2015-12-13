@@ -51,6 +51,7 @@ qubesctl top.disable %{state_name}.absent saltenv=%{saltenv} -l quiet --out quie
 
 %files
 %defattr(-,root,root)
+%doc LICENSE README.rst
 %attr(750, root, root) %dir %{formula_dir}
 %{formula_dir}/*
 
